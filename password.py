@@ -15,7 +15,6 @@ list.extend(newlist)
 
 r.shuffle(list)
 
-print(list)
 
 def arraytostr(array):
     string = ""
@@ -34,19 +33,36 @@ def tryto(array):
             print(arraytostr(tryarray))
 
 def tryto2(array):
+    tries=0
     newarray = []
     for i in range(len(array)):
         newarray.append("0")
     while newarray!=array:
         for i in range(len(array)):
             newarray[i] = list[r.randint(0,len(list)-1)]
-    print(arraytostr(newarray))
+            tries+=1
+    return tries
 
-password = []
+def newpass(value):
+    password = []
+    for i in range(value):
+        password.append(list[r.randint(0,len(list)-1)])
+    return password
+    
+trieslist = []
+
+for i in range(100):
+    for i in range(10):
+        newtries = tryto2(newpass(3))
+        trieslist.append(newtries)
+    print(sum(trieslist)/len(trieslist))
+    print(i)
 
 
-for i in range(5):
-    password.append(list[r.randint(0,len(list)-1)])
-print(arraytostr(password))
 
-tryto2(password)
+
+
+
+
+
+
